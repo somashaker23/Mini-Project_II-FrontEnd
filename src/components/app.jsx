@@ -16,7 +16,7 @@ const Footer = ()=>
 const Headr=()=>{
     return(
     <header>
-        <h1>Hostel Out Logs Mangement</h1>
+        <h1>Dashboard</h1>
     </header>)
 }
 

@@ -14,9 +14,9 @@ const LogArea = () => {
     const [records,setRecord] = useState([]);
     useEffect(() => {
         
-        let dbRef = ref(db, 'records/').limitToLast(10);
+        let dbRef = ref(db, 'records/');
         // As you are using a listener, declare it so it can be returned
-        var listener = get(dbRef).then((snapshot)=>{
+        var listener = onValue(dbRef,(snapshot)=>{
         let firedata = [];
         snapshot.forEach(x =>{
         
@@ -49,7 +49,7 @@ const LogArea = () => {
     const getData = (current, pageSize,studetails) => {
         // Normally you should get the data from the server
 
-        const record10 = records.slice((current - 1) * pageSize, current * pageSize);   
+        const record10 = records.slice((current - 1) * pageSize, current * pageSize).filter(element=>element.IN===undefined).map(element=>element);   
         
         return record10;
     };
@@ -105,19 +105,19 @@ const LogArea = () => {
                                     </thead>
                                     <tbody>
                                         {   
-
+                                            
                                             getData(current, size).map((data, index) => {
-                                           
-                                                return (
+                                            console.log(data.IN)
+                                               return (
                                                     <tr key={data.ID}>
-                                                        <td>{data.ID}</td>
+                                                        <td>{index+1}</td>
                                                         <td>{data.name}</td>
                                                         <td>{data.rollnumber}</td>
-                                                        <td>{data.mobile}</td>
+                                                        <td><a style={{color:'inherit'}} href={'tel:'+ data.mobile}>{data.mobile}</a></td>
                                                         <td>{data.OUT}</td>
                                                         <td>{data.IN}</td>
                                                     </tr>
-                                                )
+                                                );
                                             }).reverse()
                                         }
                                     </tbody>

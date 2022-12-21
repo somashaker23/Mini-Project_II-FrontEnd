@@ -2,11 +2,11 @@ import React from "react";
 
 
 const StudentBio =()=>{
-  const fname = "R";
-  const lname = "Sita";
-  const Roll = "XXBBBXXX";
-  const status = "IN";
-  const imgsrc ="https://picsum.photos/200/300"
+  const fname = "";
+  const lname = "student_name_here";
+  const Roll = "rollnumber_here";
+  const status = "status_here";
+  const imgsrc ="";//"https://picsum.photos/200/300"
   let c = { color: "orange" };
     return(
         <div className = "studentDetails">
@@ -15,7 +15,7 @@ const StudentBio =()=>{
             src= {imgsrc}
             height="150"
             width="120"
-            alt="stuimg"
+            alt="student_image"
           />
           <div className="textDetails">
             <h1 style={c}>{`${fname} ${lname}`}</h1>
